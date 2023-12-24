@@ -35,6 +35,14 @@
 	--accent-600: hsl(var(--accent-hue), var(--accent-saturation), 40%);
 	--accent-700: hsl(var(--accent-hue), var(--accent-saturation), 30%);
 
+	--normal-100: hsl(var(--normal-hue), var(--normal-saturation), 90%);
+	--normal-200: hsl(var(--normal-hue), var(--normal-saturation), 80%);
+	--normal-300: hsl(var(--normal-hue), var(--normal-saturation), 70%);
+	--normal-400: hsl(var(--normal-hue), var(--normal-saturation), 60%);
+	--normal-500: hsl(var(--normal-hue), var(--normal-saturation), 50%);
+	--normal-600: hsl(var(--normal-hue), var(--normal-saturation), 40%);
+	--normal-700: hsl(var(--normal-hue), var(--normal-saturation), 30%);
+
 	--success-100: hsl(var(--success-hue), var(--success-saturation), 90%);
 	--success-200: hsl(var(--success-hue), var(--success-saturation), 80%);
 	--success-300: hsl(var(--success-hue), var(--success-saturation), 70%);
