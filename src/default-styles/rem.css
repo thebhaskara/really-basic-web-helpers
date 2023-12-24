@@ -1,0 +1,61 @@
+/* BEGIN: Default rem setup */
+html {
+	font-size: 16px; /* Change this value to adjust the base font size */
+}
+
+body {
+	font-size: 1rem;
+}
+/* END: Default rem setup */
+
+/* BEGIN: Basic CSS variables for spaces */
+:root {
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 1rem;
+	--space-lg: 2rem;
+	--space-xl: 4rem;
+}
+/* END: Basic CSS variables for spaces */
+
+/* BEGIN: Basic CSS variables for font sizes */
+:root {
+	--font-size-h1: 2rem;
+	--font-size-h2: 1.5rem;
+	--font-size-h3: 1.17rem;
+	--font-size-h4: 1rem;
+	--font-size-h5: 0.83rem;
+	--font-size-h6: 0.67rem;
+	--font-size-p: 1rem;
+}
+/* END: Basic CSS variables for font sizes */
+
+/* Font Sizes */
+h1 {
+	font-size: var(--font-size-h1);
+}
+
+h2 {
+	font-size: var(--font-size-h2);
+}
+
+h3 {
+	font-size: var(--font-size-h3);
+}
+
+h4 {
+	font-size: var(--font-size-h4);
+}
+
+h5 {
+	font-size: var(--font-size-h5);
+}
+
+h6 {
+	font-size: var(--font-size-h6);
+}
+
+p {
+	font-size: var(--font-size-p);
+}
+/* END: Font Sizes */
