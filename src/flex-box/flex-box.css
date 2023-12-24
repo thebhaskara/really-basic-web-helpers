@@ -2,14 +2,14 @@
 /* Flex container */
 .flex { display: flex; }
 
-.f-row { flex-direction: row; }
-.f-column { flex-direction: column; }
-.f-row-reverse { flex-direction: row-reverse; }
-.f-column-reverse { flex-direction: column-reverse; }
+.fd-row { flex-direction: row; }
+.fd-column { flex-direction: column; }
+.fd-row-reverse { flex-direction: row-reverse; }
+.fd-column-reverse { flex-direction: column-reverse; }
 
 /* Flex wrap */
-.f-wrap { flex-wrap: wrap; }
-.f-nowrap { flex-wrap: nowrap; }
+.fw-wrap { flex-wrap: wrap; }
+.fw-nowrap { flex-wrap: nowrap; }
 
 /* Justify content */
 
