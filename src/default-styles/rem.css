@@ -27,6 +27,12 @@ body {
 	--font-size-h5: 0.83rem;
 	--font-size-h6: 0.67rem;
 	--font-size-p: 1rem;
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-md: 1rem;
+	--font-size-lg: 1.125rem;
+	--font-size-xl: 1.25rem;
+	--font-size-xxl: 1.5rem;
 }
 /* END: Basic CSS variables for font sizes */
 
