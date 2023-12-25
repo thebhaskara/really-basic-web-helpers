@@ -38,10 +38,10 @@
 	--normal-100: hsl(var(--normal-hue), var(--normal-saturation), 90%);
 	--normal-200: hsl(var(--normal-hue), var(--normal-saturation), 80%);
 	--normal-300: hsl(var(--normal-hue), var(--normal-saturation), 70%);
-	--normal-400: hsl(var(--normal-hue), var(--normal-saturation), 60%);
-	--normal-500: hsl(var(--normal-hue), var(--normal-saturation), 50%);
-	--normal-600: hsl(var(--normal-hue), var(--normal-saturation), 40%);
-	--normal-700: hsl(var(--normal-hue), var(--normal-saturation), 30%);
+	--normal-400: hsl(var(--normal-hue), var(--normal-saturation), 55%);
+	--normal-500: hsl(var(--normal-hue), var(--normal-saturation), 40%);
+	--normal-600: hsl(var(--normal-hue), var(--normal-saturation), 25%);
+	--normal-700: hsl(var(--normal-hue), var(--normal-saturation), 10%);
 
 	--success-100: hsl(var(--success-hue), var(--success-saturation), 90%);
 	--success-200: hsl(var(--success-hue), var(--success-saturation), 80%);
