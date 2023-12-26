@@ -80,6 +80,7 @@ let mediaQueryShorthandMap = {
 	"max-xxxl": "(max-width: 1799.98px)",
 }
 
+// TODO: add support for styles inside element for shadow components
 export function classToStyle(element = document) {
 	const style = getStyleElement()
 	const styles = new Map()
@@ -87,11 +88,11 @@ export function classToStyle(element = document) {
 		const classList = element.classList
 		const classArray = Array.from(classList)
 		classArray.forEach((className) => {
-			if (!className.includes(":")) return
+			if (!className.includes("|")) return
 			if (styles.has(className)) return
 
-			let sClassName = className.replace(/([:\+#\(\)\[\],%])/g, "\\$1")
-			let [property, value, pseudo, ...mediaquery] = className.split(":")
+			let sClassName = className.replace(/([:\+#\(\)\[\],%\|\&\.\>\<])/g, "\\$1")
+			let [property, value, selector, mediaquery] = className.split("|")
 			property = shorthandMap[property] ?? property
 			value = value
 				.split("_")
@@ -99,12 +100,13 @@ export function classToStyle(element = document) {
 				.join(" ")
 
 			let rule = ""
-			if (pseudo) rule = `.${sClassName}:${pseudo} { ${property}: ${value} }`
-			else rule = `.${sClassName} { ${property}: ${value} }`
+			if (selector) {
+				let sanitizedSelector = selector.replace(/[_]+/g, " ").replace(/[\&]+/g, `.${sClassName}`)
+				rule = `${sanitizedSelector} { ${property}: ${value} }`
+			} else rule = `.${sClassName} { ${property}: ${value} }`
 
-			if (mediaquery?.length > 0) {
+			if (mediaquery?.trim()) {
 				let query = mediaquery
-					.join(":")
 					.split("+")
 					.map((q) => mediaQueryShorthandMap[q] ?? `(${q})`)
 					.join(" and ")

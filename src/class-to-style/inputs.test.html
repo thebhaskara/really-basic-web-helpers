@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>class interpreter testing</title>
+	<link rel="stylesheet" href="../default-styles/reset.css">
+	<link rel="stylesheet" href="../default-styles/rem.css">
+	<link rel="stylesheet" href="../default-styles/colors.css">
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+	<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+</head>
+
+<body class="--color|--primary-700">
+	<h1 id="heading">Testing inputs with interpreter</h1>
+	<form action="" class="d|flex fd|column gap|--space-md">
+		<fieldset class="
+			br|5px d|flex fd|column gap|--space-xs 
+			--_fs-state-color|--normal-100 --_fs-text-color|--normal-600 border|1px_solid_--_fs-state-color
+			--_fs-state-color|--primary-500|&:has(input:focus)
+			--_fs-state-color|--danger-500|&:has(input:invalid)
+			">
+			<legend for="input1" class="color|--_fs-state-color fs|--font-size-xs">Input 1</legend>
+			<label for="input1" class="color|--_fs-text-color fs|--font-size-xs">Input 1</label>
+			<input type="text" id="input1" class="outline|none fg|1 w|auto" required>
+			<span class="
+				fs|--font-size-xs color|--danger-500 
+				d|none
+				d|block|fieldset:has(input:invalid)_&
+				">This field is required</span>
+		</fieldset>
+		<fieldset class="br|5px d|flex fd|column gap|--space-md">
+			<!-- fieldset classname|hover -->
+			<legend class="color|--_fs-state-color|fieldset_&|hover fs|--font-size-xs">Input 1</legend>
+			<div class="d|flex fd|row g|--space-xs">
+				<input type="radio" name="input2" id="input2" class="outline|none"> <label class="fg|1"
+					for="input2">Input 1</label>
+			</div>
+			<div class="d|flex fd|row g|--space-xs">
+				<input type="radio" name="input2" id="input3" class="outline|none"> <label class="fg|1"
+					for="input3">Input 2</label>
+			</div>
+			<div class="d|flex fd|row g|--space-xs">
+				<input type="radio" name="input2" id="input4" class="outline|none"> <label class="fg|1"
+					for="input4">Input 3</label>
+			</div>
+			<span class="fs|--font-size-xs color|--danger-500 error-required">This field is required</span>
+		</fieldset>
+		<fieldset class="
+			br|5px d|flex fd|column gap|--space-xs 
+			--_fs-state-color|--normal-100 --_fs-text-color|--normal-600 border|1px_solid_--_fs-state-color
+			--_fs-state-color|--primary-500|&:has(input:focus)
+			--_fs-state-color|--danger-500|&:has(input:invalid)
+			">
+			<legend for="input1" class="color|--_fs-state-color fs|--font-size-xs">Input 1</legend>
+			<div class="d|flex fd|row gap|--space-md jc|center">
+				<input type="datetime-local" id="min-date" class="outline|none w|auto ta|right">
+				to
+				<input type="datetime-local" id="max-date" class="outline|none w|auto">
+			</div>
+			<span class="
+				fs|--font-size-xs color|--danger-500 
+				d|none
+				d|block|fieldset:has(input:invalid)_&
+				">This field is required</span>
+		</fieldset>
+		<fieldset class="
+			br|5px d|flex fd|column gap|--space-xs 
+			--_fs-state-color|--normal-100 --_fs-text-color|--normal-600 border|1px_solid_--_fs-state-color
+			--_fs-state-color|--primary-500|&:has(input:focus)
+			--_fs-state-color|--danger-500|&:has(input:invalid)
+			">
+			<legend for="input1" class="color|--_fs-state-color fs|--font-size-xs">Input 1</legend>
+			<input id="auto-complete" list="auto-complete-list" class="outline|none w|auto">
+			<datalist id="auto-complete-list">
+				<option value="🛫 Mumbai, IN - Chatrapati Shivaji Airport (BOM)"> </option>
+				<option value="DEL"> Delhi Airport</option>
+				<option value="BLR">🛫 Lalbahadur</option>
+			</datalist>
+			<span class="
+				fs|--font-size-xs color|--danger-500 
+				d|none
+				d|block|fieldset:has(input:invalid)_&
+				">This field is required</span>
+		</fieldset>
+		<button class="py|--space-md px|--space-lg">submit</button>
+	</form>
+	<script src="class-to-style.js" type="module"></script>
+	<style>
+		/* fieldset {
+			--_fs-state-color: var(--normal-100);
+			--_fs-text-color: var(--normal-600);
+			border: 1px solid var(--_fs-state-color);
+		} */
+		/* fieldset legend {
+			color: var(--_fs-state-color);
+		} */
+		/* fieldset label {
+			color: var(--_fs-text-color)
+		} */
+		/* fieldset:has(input:focus) {
+			--_fs-state-color: var(--primary-500);
+		}  */
+
+		/* fieldset:has(input:invalid) {
+			--_fs-state-color: var(--danger-500);
+		}*/
+
+		/* .error-required {
+			display: none;
+		}
+
+		fieldset:has(input:invalid) .error-required {
+			display: block;
+		} */
+
+		/* input[type="date"] {
+			position: relative;
+		}
+
+		input[type="date"]::-webkit-calendar-picker-indicator {
+			background: transparent;
+			bottom: 0;
+			color: transparent;
+			cursor: pointer;
+			height: auto;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: auto;
+		} */
+	</style>
+	<script>
+		let minDate = document.getElementById('min-date');
+		let maxDate = document.getElementById('max-date');
+		let heading = document.getElementById('heading');
+		heading.addEventListener('click', () => {
+			minDate.showPicker();
+		})
+		minDate.addEventListener('click', () => {
+			minDate.showPicker();
+		})
+		minDate.addEventListener('change', () => {
+			console.log(minDate.value);
+			maxDate.min = minDate.value;
+			maxDate.showPicker();
+		})
+		let autoComplete = document.getElementById('auto-complete');
+		let autoCompleteList = document.getElementById('auto-complete-list');
+
+		autoComplete.addEventListener('keyup', () => {
+			console.log(autoComplete.value);
+			if (autoCompleteList.querySelectorAll(`option[value=${autoComplete.value}]`).length > 0) {
+				return;
+			}
+			for (let i = 0; i < 100; i++) {
+				let option = document.createElement('option');
+				option.value = autoComplete.value + " - " + Math.random();
+				autoCompleteList.appendChild(option);
+			}
+
+			autoComplete.showPicker();
+		})
+
+		// setTimeout(() => {
+		// 	minDate.showPopover();
+		// 	// maxDate.showPicker();
+		// }, 1000)
+	</script>
+</body>
+
+</html>

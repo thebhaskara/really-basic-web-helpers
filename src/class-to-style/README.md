@@ -6,16 +6,16 @@ If this helps, please star the repo.
 
 ## Usage
 
-The syntax for using it is `property:value:pseudo:media-query`.
+The syntax for using it is `property|value|selector|media-query`.
 
-Here, the `property` and `value` are required. The `pseudo` and `media-query` are optional.
+Here, the `property` and `value` are required. The `selector` and `media-query` are optional.
 
 ### Property
 
 The property is the css property that you want to apply. For example, `color`, `background-color`, `font-size`, `margin`, `padding`, etc.
 
 ```html
-<div class="color:red">
+<div class="color|red">
 	<!-- Content goes here -->
 </div>
 ```
@@ -23,7 +23,7 @@ The property is the css property that you want to apply. For example, `color`, `
 There are certian shorthands also available. For example, `m` for `margin`, `p` for `padding`, `bg` for `background-color`, etc.
 
 ```html
-<div class="d:flex">
+<div class="d|flex">
 	<!-- display:flex -->
 	<!-- Content goes here -->
 </div>
@@ -79,8 +79,8 @@ Following is the full list of shorthands available:
 I dont know if you realized it, but you can assign values to css properties too
 
 ```html
-<div class="--hmm:--primary-100">
-	<div class="d:flex jc:center color:--hmm">
+<div class="--hmm|--primary-100">
+	<div class="d|flex jc|center color|--hmm">
 		<!-- display:flex; justify-content:center -->
 		<!-- Content goes here -->
 	</div>
@@ -92,7 +92,7 @@ I dont know if you realized it, but you can assign values to css properties too
 The value is the value of the property. For example, `red`, `1rem`, `10px`, `center`, `row`, `column`, etc.
 
 ```html
-<div class="color:red">
+<div class="color|red">
 	<!-- Content goes here -->
 </div>
 ```
@@ -100,7 +100,7 @@ The value is the value of the property. For example, `red`, `1rem`, `10px`, `cen
 Value has an additional addon to recognize the css variables. If you want to use a css variable, then you can use the following syntax:
 
 ```html
-<div class="color:--primary-100">
+<div class="color|--primary-100">
 	<!-- Content goes here -->
 </div>
 ```
@@ -108,13 +108,13 @@ Value has an additional addon to recognize the css variables. If you want to use
 BTW, the css property values can have spaces right?. and you cannot put spaces in class names. So, how do you do that? Well, you can use `_` instead of spaces. For example, `center` becomes `center`, `center center` becomes `center_center`, `center center center` becomes `center_center_center`, etc.
 
 ```html
-<div class="d:flex jc:center_center">
+<div class="d|flex jc|center_center">
 	<!-- Content goes here -->
 </div>
 ```
 
 ```html
-<div class="d:flex bs:1px_1px_2px_#999999">
+<div class="d|flex bs|1px_1px_2px_#999999">
 	<!-- box-shadow: 1px 1px 2px #999999 -->
 	<!-- Content goes here -->
 </div>
@@ -125,18 +125,20 @@ Oh yeah, you can also use hex values. Just prefix it with `#`.
 Also, you can use rgb or hsl values. Just prefix it with `rgb(` and suffix it with `)`. Just make sure that spaces are not there or they are replced with `_`.
 
 ```html
-<div class="d:flex bs:1px_1px_2px_rgb(153,153,153)">
+<div class="d|flex bs|1px_1px_2px_rgb(153,153,153)">
 	<!-- box-shadow: 1px 1px 2px rgb(153, 153, 153) -->
 	<!-- Content goes here -->
 </div>
 ```
 
-### Pseudo
+### Selector
 
-The pseudo is the pseudo class that you want to apply. For example, `hover`, `focus`, `active`, `visited`, etc.
+The selector is the selector class that you want to apply. For example, `&:hover`, `&:focus`, `&:has(a:active)`, `.card_&`, etc.
+
+Here, `&` is replaced by the class name generated. And, `_` is replaced by a space (to use it in places where selector requires a space).
 
 ```html
-<div class="color:red:hover">
+<div class="color|red|&:hover">
 	<!-- Content goes here -->
 </div>
 ```
@@ -148,7 +150,7 @@ The media query is the media query that you want to apply. There is a pattern to
 For eg...
 
 ```html
-<div class="color:red:hover:screen+min-width:600px">
+<div class="color|red|&:hover|screen+min-width:600px">
 	<!-- translates to @media only screen and (min-width:600px) -->
 	<!-- Content goes here -->
 </div>
@@ -157,7 +159,7 @@ For eg...
 you can do multiple conditions too
 
 ```html
-<div class="color:red:hover:screen+min-width:600px+max-width:800px">
+<div class="color|red|&:hover|screen+min-width:600px+max-width:800px">
 	<!-- translates to @media only screen and (min-width:600px) and (max-width:800px) -->
 	<!-- Content goes here -->
 </div>
@@ -166,7 +168,7 @@ you can do multiple conditions too
 BTW, you can use the shorthands for media queries too.
 
 ```html
-<div class="color:red:hover:screen+min-xs+max-lg">
+<div class="color|red|&:hover|screen+min-xs+max-lg">
 	<!-- translates to @media only screen and (min-width: 0px) and (max-width: 1199.98px) -->
 	<!-- Content goes here -->
 </div>
