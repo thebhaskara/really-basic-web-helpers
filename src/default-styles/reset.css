@@ -1,52 +1,20 @@
 /* Reset CSS */
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
+:where(*) {
 	margin: 0;
 	padding: 0;
-}
-
-a {
-	text-decoration: none;
-}
-
-img {
 	border: 0;
-}
-
-ul,
-ol {
+	/* font-size: 100%; */
+	font-family: inherit;
+	vertical-align: baseline;
+	text-decoration: none;
 	list-style: none;
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font-family: inherit;
-	vertical-align: baseline;
+:where(body) {
+	font-family: Arial, Helvetica, sans-serif;
+	/* font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; */
+	/* font-family: Noto Color Emoji; */
 }
 
 /* END: Reset CSS */

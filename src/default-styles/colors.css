@@ -26,6 +26,9 @@
 	--primary-500: hsl(var(--primary-hue), var(--primary-saturation), 50%);
 	--primary-600: hsl(var(--primary-hue), var(--primary-saturation), 40%);
 	--primary-700: hsl(var(--primary-hue), var(--primary-saturation), 30%);
+	--primary-800: hsl(var(--primary-hue), var(--primary-saturation), 20%);
+	--primary-900: hsl(var(--primary-hue), var(--primary-saturation), 10%);
+	--primary-1000: hsl(var(--primary-hue), var(--primary-saturation), 0%);
 
 	--accent-100: hsl(var(--accent-hue), var(--accent-saturation), 90%);
 	--accent-200: hsl(var(--accent-hue), var(--accent-saturation), 80%);
@@ -34,14 +37,20 @@
 	--accent-500: hsl(var(--accent-hue), var(--accent-saturation), 50%);
 	--accent-600: hsl(var(--accent-hue), var(--accent-saturation), 40%);
 	--accent-700: hsl(var(--accent-hue), var(--accent-saturation), 30%);
+	--accent-800: hsl(var(--accent-hue), var(--accent-saturation), 20%);
+	--accent-900: hsl(var(--accent-hue), var(--accent-saturation), 10%);
+	--accent-1000: hsl(var(--accent-hue), var(--accent-saturation), 0%);
 
 	--normal-100: hsl(var(--normal-hue), var(--normal-saturation), 90%);
 	--normal-200: hsl(var(--normal-hue), var(--normal-saturation), 80%);
 	--normal-300: hsl(var(--normal-hue), var(--normal-saturation), 70%);
-	--normal-400: hsl(var(--normal-hue), var(--normal-saturation), 55%);
-	--normal-500: hsl(var(--normal-hue), var(--normal-saturation), 40%);
-	--normal-600: hsl(var(--normal-hue), var(--normal-saturation), 25%);
-	--normal-700: hsl(var(--normal-hue), var(--normal-saturation), 10%);
+	--normal-400: hsl(var(--normal-hue), var(--normal-saturation), 60%);
+	--normal-500: hsl(var(--normal-hue), var(--normal-saturation), 50%);
+	--normal-600: hsl(var(--normal-hue), var(--normal-saturation), 40%);
+	--normal-700: hsl(var(--normal-hue), var(--normal-saturation), 30%);
+	--normal-800: hsl(var(--normal-hue), var(--normal-saturation), 20%);
+	--normal-900: hsl(var(--normal-hue), var(--normal-saturation), 10%);
+	--normal-1000: hsl(var(--normal-hue), var(--normal-saturation), 0%);
 
 	--success-100: hsl(var(--success-hue), var(--success-saturation), 90%);
 	--success-200: hsl(var(--success-hue), var(--success-saturation), 80%);
@@ -50,6 +59,9 @@
 	--success-500: hsl(var(--success-hue), var(--success-saturation), 50%);
 	--success-600: hsl(var(--success-hue), var(--success-saturation), 40%);
 	--success-700: hsl(var(--success-hue), var(--success-saturation), 30%);
+	--success-800: hsl(var(--success-hue), var(--success-saturation), 20%);
+	--success-900: hsl(var(--success-hue), var(--success-saturation), 10%);
+	--success-1000: hsl(var(--success-hue), var(--success-saturation), 0%);
 
 	--warning-100: hsl(var(--warning-hue), var(--warning-saturation), 90%);
 	--warning-200: hsl(var(--warning-hue), var(--warning-saturation), 80%);
@@ -58,6 +70,9 @@
 	--warning-500: hsl(var(--warning-hue), var(--warning-saturation), 50%);
 	--warning-600: hsl(var(--warning-hue), var(--warning-saturation), 40%);
 	--warning-700: hsl(var(--warning-hue), var(--warning-saturation), 30%);
+	--warning-800: hsl(var(--warning-hue), var(--warning-saturation), 20%);
+	--warning-900: hsl(var(--warning-hue), var(--warning-saturation), 10%);
+	--warning-1000: hsl(var(--warning-hue), var(--warning-saturation), 0%);
 
 	--danger-100: hsl(var(--danger-hue), var(--danger-saturation), 90%);
 	--danger-200: hsl(var(--danger-hue), var(--danger-saturation), 80%);
@@ -66,5 +81,8 @@
 	--danger-500: hsl(var(--danger-hue), var(--danger-saturation), 50%);
 	--danger-600: hsl(var(--danger-hue), var(--danger-saturation), 40%);
 	--danger-700: hsl(var(--danger-hue), var(--danger-saturation), 30%);
+	--danger-800: hsl(var(--danger-hue), var(--danger-saturation), 20%);
+	--danger-900: hsl(var(--danger-hue), var(--danger-saturation), 10%);
+	--danger-1000: hsl(var(--danger-hue), var(--danger-saturation), 0%);
 	/* END: Color variations */
 }

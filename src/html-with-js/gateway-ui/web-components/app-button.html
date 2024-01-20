@@ -1,0 +1,16 @@
+<app-button>
+	<div class="
+		d|inline-flex br|2px cursor|pointer
+		padding-block|--i-v-space padding-inline|--i-h-space gap|--i-v-space 
+		bg|--normal-100 bg|--normal-200|&:hover color|--normal-800
+		bg|--primary-100|:host(.primary)_& bg|--primary-200|:host(.primary)_&:hover color|--primary-800|:host(.primary)_&
+		bg|--accent-100|:host(.accent)_& bg|--accent-200|:host(.accent)_&:hover color|--accent-800|:host(.accent)_&
+		bg|--success-100|:host(.success)_& bg|--success-200|:host(.success)_&:hover color|--success-800|:host(.success)_&
+		bg|--warning-100|:host(.warning)_& bg|--warning-200|:host(.warning)_&:hover color|--warning-800|:host(.warning)_&
+		bg|--danger-100|:host(.danger)_& bg|--danger-200|:host(.danger)_&:hover color|--danger-800|:host(.danger)_&
+		">
+		<slot name="start"></slot>
+		<slot></slot>
+		<slot name="end"></slot>
+	</div>
+</app-button>

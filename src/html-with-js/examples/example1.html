@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link type="text/css" rel="stylesheet" href="../../default-styles/reset.css">
+	<link type="text/css" rel="stylesheet" href="../../default-styles/rem.css">
+	<link type="text/css" rel="stylesheet" href="../../default-styles/colors.css">
+</head>
+<body>
+	<div>
+		<h1>Testing active-html</h1>
+		<h2 js-text="$data.name"></h2>
+		<fragment js-if="$data.name">
+			<h3 js-text="$data.name"></h3>
+		</fragment>
+		<fragment js-for="$data.numbers">
+			<p js-text="$data.$item"></p>
+		</fragment>
+		<app-button js="$el['start-icon'] = 'asdfvs'">
+			<button>Click me</button>
+		</app-button>
+		<div js-import="'./comp1'"></div>
+	</div>
+	<script src="./example1.mjs" type="module"></script>
+</body>
+</html>

@@ -1,12 +1,22 @@
-const getStyleElement = () => {
+//@ts-check
+/**
+ *
+ * @param {Document | ShadowRoot} element
+ * @returns
+ */
+const getStyleElement = (element) => {
 	// Check if the style element already exists
-	const style = document.getElementById("class-interpreter")
+	const style = element.getElementById("class-interpreter")
 	if (style) return style
 
 	const newStyle = document.createElement("style")
 	newStyle.id = "class-interpreter"
 	newStyle.appendChild(document.createTextNode(""))
-	document.head.appendChild(newStyle)
+	if (element instanceof Document) {
+		element.head.appendChild(newStyle)
+	} else {
+		element.appendChild(newStyle)
+	}
 	return newStyle
 }
 
@@ -80,40 +90,15 @@ let mediaQueryShorthandMap = {
 	"max-xxxl": "(max-width: 1799.98px)",
 }
 
-// TODO: add support for styles inside element for shadow components
+/**
+ *
+ * @param {Document | ShadowRoot} element
+ */
 export function classToStyle(element = document) {
-	const style = getStyleElement()
+	const style = getStyleElement(element)
 	const styles = new Map()
 	element.querySelectorAll("[class]").forEach((element) => {
-		const classList = element.classList
-		const classArray = Array.from(classList)
-		classArray.forEach((className) => {
-			if (!className.includes("|")) return
-			if (styles.has(className)) return
-
-			let sClassName = className.replace(/([:\+#\(\)\[\],%\|\&\.\>\<])/g, "\\$1")
-			let [property, value, selector, mediaquery] = className.split("|")
-			property = shorthandMap[property] ?? property
-			value = value
-				.split("_")
-				.map((v) => (v.startsWith("--") ? `var(${v})` : v))
-				.join(" ")
-
-			let rule = ""
-			if (selector) {
-				let sanitizedSelector = selector.replace(/[_]+/g, " ").replace(/[\&]+/g, `.${sClassName}`)
-				rule = `${sanitizedSelector} { ${property}: ${value} }`
-			} else rule = `.${sClassName} { ${property}: ${value} }`
-
-			if (mediaquery?.trim()) {
-				let query = mediaquery
-					.split("+")
-					.map((q) => mediaQueryShorthandMap[q] ?? `(${q})`)
-					.join(" and ")
-				rule = `@media ${query} { ${rule} }`
-			}
-			styles.set(className, rule)
-		})
+		element.classList.forEach((className) => createStylesForClassName(className, styles))
 	})
 	let html = Array.from(styles.values()).join("\n")
 	if (html === style.innerHTML) return
@@ -122,10 +107,46 @@ export function classToStyle(element = document) {
 
 setTimeout(classToStyle, 100)
 
-// Create a new MutationObserver instance
-const observer = new MutationObserver(() => {
-	setTimeout(classToStyle, 1)
-})
+export function observerMutationsAndApplyClassToStyle() {
+	// Create a new MutationObserver instance
+	const observer = new MutationObserver(() => {
+		setTimeout(classToStyle, 1)
+	})
 
-// Start observing mutations on the entire document
-observer.observe(document, { subtree: true, childList: true, attributes: true, characterData: true })
+	// Start observing mutations on the entire document
+	observer.observe(document, { subtree: true, childList: true, attributes: true, characterData: true })
+}
+
+/**
+ *
+ * @param {string} className
+ * @param {Map<string, string>} styles
+ * @returns
+ */
+function createStylesForClassName(className, styles) {
+	if (!className.includes("|")) return
+	if (styles.has(className)) return
+
+	let sClassName = className.replace(/([:\+#\(\)\[\],%\|\&\.\>\<])/g, "\\$1")
+	let [property, value, selector, mediaquery] = className.split("|")
+	property = shorthandMap[property] ?? property
+	value = value
+		.split("_")
+		.map((v) => (v.startsWith("--") ? `var(${v})` : v))
+		.join(" ")
+
+	let rule = ""
+	if (selector) {
+		let sanitizedSelector = selector.replace(/[_]+/g, " ").replace(/[\&]+/g, `.${sClassName}`)
+		rule = `${sanitizedSelector} { ${property}: ${value} }`
+	} else rule = `.${sClassName} { ${property}: ${value} }`
+
+	if (mediaquery?.trim()) {
+		let query = mediaquery
+			.split("+")
+			.map((q) => mediaQueryShorthandMap[q] ?? `(${q})`)
+			.join(" and ")
+		rule = `@media ${query} { ${rule} }`
+	}
+	styles.set(className, rule)
+}

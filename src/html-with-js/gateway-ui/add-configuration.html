@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gateway</title>
+	<link rel="stylesheet" href="../../default-styles/reset.css">
+	<link rel="stylesheet" href="../../default-styles/rem.css">
+	<link rel="stylesheet" href="../../default-styles/colors.css">
+	<link rel="stylesheet" href="./component-styles.css">
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+	<!-- <header>Test bench</header>
+	<div class="d|flex fd|row fg|1">
+		<nav class="w|200px"></nav>
+		<main class="d|flex fd|column gap|--space-sm fg|1">
+			<stack-horizontal>
+				<h2 class="fg|1">Add Configuration</h2>
+			</stack-horizontal>
+			<form>
+				<stack-vertical>
+					<label>Source</label>
+					<input type="text" name="src" placeholder="src">
+				</stack-vertical>
+			</form>
+		</main>
+	</div>
+	<footer>Copywrite none</footer> -->
+	<app-layout>
+		<header slot="header">
+			Hi There
+		</header>
+		<div slot="nav" class="d|flex fd|column gap|--space-sm">
+			<app-button js-on-click="window.location.href = './index.html'">Configurations</app-button>
+			<app-button js-on-click="window.location.href = './add-configuration.html'">Add</app-button>
+		</div>
+		<main>
+			<stack-horizontal>
+				<h2 class="fg|1">Add Configuration</h2>
+			</stack-horizontal>
+			<form>
+				<stack-vertical>
+					<app-formfield>
+						<label slot="label">Source</label>
+						<ion-icon slot="start-icon" name="heart"></ion-icon>
+						<input type="text" name="src" placeholder="src">
+					</app-formfield>
+				</stack-vertical>
+			</form>
+		</main>
+		<footer slot="footer">Copywrite none</footer>
+		<script type="module" src="./index.mjs"></script>
+</body>
+
+</html>

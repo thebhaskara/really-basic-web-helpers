@@ -1,0 +1,12 @@
+<app-layout>
+	<slot name="header"></slot>
+	<div class="d|flex fd|row fg|1 gap|inherit|:host:has([slot=nav])_&">
+		<nav class="w|200px|:slotted([slot=nav])_&">
+			<slot name="nav"></slot>
+		</nav>
+		<main class="d|flex fd|column fg|1">
+			<slot></slot>
+		</main>
+	</div>
+	<slot name="footer"></slot>
+</app-layout>

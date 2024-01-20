@@ -1,0 +1,24 @@
+<app-formfield>
+	<fieldset class="d|flex fd|column gap|--i-space br|3px
+		fs|--font-size-sm|::slotted(label[slot=label])
+		border-color|--primary-400|:host(:focus-within)_&
+		border-width|1px border-style|solid
+		">
+		<legend class="d|flex fd|row gap|--i-space"><slot name="legend"></slot></legend>
+		<slot name="label"></slot>
+		<div class="
+			d|flex fd|row gap|--i-space 
+			">
+			<div>
+				<slot name="start-icon"></slot>
+			</div>
+			<div class="fg|1 outline|none|::slotted(input) width|100%|::slotted(input) fs|--font-size-md|::slotted(input) ">
+				<slot></slot>
+			</div>
+			<div>
+				<slot name="end-icon"></slot>
+			</div>
+		</div>
+		<slot name="helper-text"></slot>
+	</fieldset>
+</app-formfield>
