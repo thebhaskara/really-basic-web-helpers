@@ -7,7 +7,7 @@
  */
 export function execute(str, obj) {
 	let finalString = `return (${str})`
-	if (str.split(/[\n\r]+/).length > 1) {
+	if (str.split(/[\n\r;]+/).length > 1) {
 		finalString = str
 	}
 	if (str.indexOf("return ") > -1) {
