@@ -26,7 +26,8 @@ export function runHtmlWithJs(elements, data) {
 	const attributes = Array.from(element.attributes)
 	attributes.forEach((attribute) => {
 		if (!attribute.name.startsWith("js")) return
-		let obj = "$el" in data ? { ...data } : { $el: element, $attr: attribute, $data: data }
+		let $state = getState(data)
+		let obj = { ...data, $el: element, $attr: attribute, $data: data, $state }
 
 		simpleEventListener(attribute, element, obj) ||
 			simpleTextBinder(attribute, element, obj) ||
@@ -42,6 +43,16 @@ export function runHtmlWithJs(elements, data) {
 		element.removeAttribute(attribute.name)
 	})
 	runHtmlWithJs([...element.children], data)
+}
+
+const stateWeakMap = new WeakMap()
+function getState(data) {
+	let $state = stateWeakMap.get(data?.$item ?? data)
+	if (!$state) {
+		$state = watcher.watch({ $parentState: data?.$state })
+		stateWeakMap.set(data?.$item ?? data, $state)
+	}
+	return $state
 }
 
 function simpleImportBinder(attribute, element, obj) {
@@ -135,12 +146,14 @@ function simpleForBinder(attribute, element, obj) {
 
 		let arr = execute(attribute.value, obj)
 		if (!Array.isArray(arr)) return
-
-		arr.forEach(($item, $index) => {
-			elements.push(...Array.from(element.content.cloneNode(true).childNodes))
-			runHtmlWithJs(elements, { ...obj, $item, $index })
-			elements.forEach((element) => comment.after(element))
-		})
+		arr.reverse()
+		for (let $index = 0; $index < arr.length; $index++) {
+			let $item = arr[$index]
+			const items = Array.from(element.content.cloneNode(true).childNodes)
+			runHtmlWithJs(items, { ...obj, $item, $index })
+			items.forEach((element) => comment.after(element))
+			elements.push(...items)
+		}
 	})
 
 	return true
@@ -164,7 +177,7 @@ function simpleIfBinder(attribute, element, obj) {
 		// elements = stringToElementsList(html)
 		elements = Array.from(element.content.cloneNode(true).childNodes)
 		runHtmlWithJs(elements, { ...obj })
-		elements.forEach((element) => comment.after(element))
+		elements.reverse().forEach((element) => comment.after(element))
 	})
 
 	return true
@@ -207,7 +220,14 @@ function simpleAttributeBinder(attribute, element, obj) {
 	if (!attribute.name.startsWith("js-attr")) return
 	let attr = attribute.name.replace("js-attr-", "")
 	watcher.trigger(() => {
-		element.setAttribute(attr, execute(attribute.value, obj))
+		let value = execute(attribute.value, obj)
+		if (value === true) {
+			element.setAttribute(attr, "")
+		} else if (value === false || value == null || value === undefined) {
+			element.removeAttribute(attr)
+		} else {
+			element.setAttribute(attr, value)
+		}
 	})
 
 	return true
@@ -249,9 +269,10 @@ export async function convertToWebComponent(ref) {
 		let res = await fetch(ref)
 		let html = await res.text()
 		let elements = stringToElementsList(html)
-		if (elements.length !== 1) throw new Error("Only one root element is allowed")
 		for (const element of elements) {
-			if (element instanceof Element) return convertToWebComponent(element)
+			if (element instanceof Element) {
+				convertToWebComponent(element)
+			}
 		}
 		return
 	}
