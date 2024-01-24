@@ -1,7 +1,7 @@
 // @ts-check
-import { classToStyle } from "../class-to-style/class-to-style.mjs"
-import { execute } from "../string-executer/string-executer.mjs"
-import { watcher } from "../watch-engine/watch-engine.mjs"
+import { classToStyle } from "../class-to-style/class-to-style.js"
+import { execute } from "../string-executer/string-executer.js"
+import { watcher } from "../watch-engine/watch-engine.js"
 
 export function stringToDOM(str) {
 	const template = document.createElement("template")
@@ -261,7 +261,6 @@ function simpleJsExecute(attribute, element, obj) {
 	return true
 }
 
-let refprefix = "/experiments"
 /**
  * @param {Element | string} ref
  */
