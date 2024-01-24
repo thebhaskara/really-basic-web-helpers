@@ -261,12 +261,13 @@ function simpleJsExecute(attribute, element, obj) {
 	return true
 }
 
+let refprefix = "/experiments"
 /**
  * @param {Element | string} ref
  */
 export async function convertToWebComponent(ref) {
 	if (typeof ref === "string") {
-		let res = await fetch(ref)
+		let res = await fetch(`${refprefix}${ref}`)
 		let html = await res.text()
 		let elements = stringToElementsList(html)
 		for (const element of elements) {
