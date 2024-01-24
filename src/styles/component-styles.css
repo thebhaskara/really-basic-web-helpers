@@ -1,0 +1,38 @@
+/* body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	box-sizing: border-box;
+	padding: var(--space-sm);
+	gap: var(--space-sm);
+} */
+
+layout-horizontal,
+stack-horizontal {
+	display: flex;
+	flex-direction: row;
+}
+
+layout-vertical,
+stack-vertical {
+	display: flex;
+	flex-direction: column;
+}
+
+app-layout {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	box-sizing: border-box;
+	padding: var(--space-sm);
+	gap: var(--space-sm);
+}
+
+:where(app-button) {
+	--i-v-space: var(--space-sm);
+	--i-h-space: calc(var(--space-sm) * 2);
+}
+
+:where(app-formfield) {
+	--i-space: var(--space-sm);
+}

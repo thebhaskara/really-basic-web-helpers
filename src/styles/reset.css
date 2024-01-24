@@ -17,4 +17,11 @@
 	/* font-family: Noto Color Emoji; */
 }
 
+:where(pre) {
+	font-family: monospace;
+	font-size: 0.8rem;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
 /* END: Reset CSS */
