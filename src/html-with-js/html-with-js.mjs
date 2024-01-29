@@ -1,7 +1,7 @@
 // @ts-check
-import { classToStyle } from "../class-to-style/class-to-style.js"
-import { execute } from "../string-executer/string-executer.js"
-import { watcher } from "../watch-engine/watch-engine.js"
+import { classToStyle } from "../class-to-style/class-to-style.mjs"
+import { execute } from "../string-executer/string-executer.mjs"
+import { watcher } from "../watch-engine/watch-engine.mjs"
 
 export function stringToDOM(str) {
 	const template = document.createElement("template")
