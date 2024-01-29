@@ -261,6 +261,8 @@ function simpleJsExecute(attribute, element, obj) {
 	return true
 }
 
+let refprefix = ""
+
 /**
  * @param {Element | string} ref
  */
